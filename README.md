@@ -4,9 +4,9 @@ A custom side project OS. Created using tutorials from https://wiki.osdev.org/
 To build the OS, you must have a GCC cross-compiler, see the link below for instructions:
 https://wiki.osdev.org/GCC_Cross-Compiler
 
-Once you have a GCC cross-compiler, you can build the project using the following commands:
-cd src/
-make myos.iso
+Once you have a GCC cross-compiler, you can build the project using the following commands: <br />
+cd src/ <br />
+make myos.iso 
 
 This will build the project and make a bootable iso file.
 
