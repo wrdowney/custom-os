@@ -25,6 +25,7 @@ OBJS = $(CSRCS:.c=.o) $(ASRCS:.a=.o)
 #define executable
 MAIN = myos.bin
 
+
 all: link
 
 link: boot.o kernel.o
@@ -37,7 +38,11 @@ kernel.o: kernel.c
 	$(CC) -c kernel.c -o kernel.o $(CFLAGS)
 
 myos.iso: link
-	mkdir -p isodir/boot/grub
-	cp myos.bin isodir/boot/myos.bin
-	cp grub.cfg isodir/boot/grub/grub.cfg
-	grub-mkrescue -o myos.iso isodir
+	mkdir -p ../iso/boot/grub
+	cp myos.bin ../iso/boot/myos.bin
+	cp grub.cfg ../iso/boot/grub/grub.cfg
+	grub-mkrescue -o myos.iso ../iso
+	mv myos.iso ../
+
+clean:
+	rm -rf *.o ../iso/ myos.bin ../myos.iso
