@@ -87,6 +87,14 @@ void terminal_putentryat(char c, uint8_t color, size_t x, size_t y)
 	terminal_buffer[index] = vga_entry(c, color);
 }
 
+void terminal_scroll() {
+	for (size_t i = 0; i < VGA_HEIGHT; i++) {
+		for (size_t j = 0; j < VGA_WIDTH; j++) {
+			terminal_buffer[i * VGA_WIDTH + j] = terminal_buffer[(i + 1) * VGA_WIDTH + j];
+		}
+	}
+}
+
 /*places a character in terminal*/
 void terminal_putchar(char c) 
 {
@@ -100,8 +108,9 @@ void terminal_putchar(char c)
     //check if location is out of bounds
 	if (++terminal_column == VGA_WIDTH) {
 		terminal_column = 0;
-		if (++terminal_row == VGA_HEIGHT)
-			terminal_row = 0;
+		if (++terminal_row == VGA_HEIGHT) {
+			terminal_scroll();
+		}
 	}
 }
 
@@ -125,5 +134,8 @@ void kernel_main(void)
 	terminal_initialize();
 
 	/* Newline support is left as an exercise. */
-	terminal_writestring("Hello, World!\nTEST");
+	for (size_t i = 0; i < 35; i++) {	
+		terminal_writestring("HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello");
+	}
+	
 }
