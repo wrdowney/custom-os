@@ -16,7 +16,7 @@ qemu-system-i386 -cdrom myos.iso
 The project is currently at the Bare Bones stage, it only outputs Hello, World! to the terminal.
 
 TO-DO:
-- Calling Global Constructors
-- Meaty Skeleton
-- Going further
-- RMHC Compliant Makefile
+- Physical memory manager
+- 32-bit paging
+- GDT
+- IDT
